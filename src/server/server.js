@@ -18,8 +18,15 @@ app.get("/data", (req, res) => {
       )}&page=${page}&fields=username,tags,previews,url`
     )
     .then((r) => r.data)
-    .then((data) => res.json(data));
+    .then((data) => res.json(data))
+    .catch((error) => {
+      console.error(error);
+      res.status(500);
+      res.json("Hubo un error");
+    });
 });
+
+app.get("*", (req, res) => res.send(":P"));
 
 app.listen(port, () =>
   console.log(`"Campo Sonoro" API listening on port ${port}!`)
