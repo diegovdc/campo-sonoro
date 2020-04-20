@@ -1,14 +1,18 @@
 {
   "name": "campo-sonoro",
   "version": "1.0.0",
-  "description": "Remixer de grabaciones de campo usando el API de Freesound.org",
-  "main": "index.js",
+  "description": "Server for getting ",
+  "main": "src/server/index.js",
   "scripts": {
-    "start": "parcel src/index.html"
+    "start": "node ./src/server/server.js",
+    "proxy": "nodemon ./src/js/proxy/server.js --watch ./src/js/proxy/server.js"
   },
   "author": "",
   "license": "GPLv3",
   "dependencies": {
-    "parcel": "^1.12.4"
+    "axios": "^0.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.4"
   }
 }
