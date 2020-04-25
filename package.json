@@ -5,7 +5,7 @@
   "main": "src/server/index.js",
   "scripts": {
     "start": "node ./src/server/server.js",
-    "proxy": "nodemon ./src/js/proxy/server.js --watch ./src/js/proxy/server.js"
+    "dev": "nodemon ./src/server/server.js --watch ./src/server/"
   },
   "author": "",
   "license": "GPLv3",

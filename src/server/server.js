@@ -15,7 +15,7 @@ app.get("/data", (req, res) => {
       `https://freesound.org/apiv2/search/text?token=${token}&query=field+recordings+${query.replace(
         " ",
         "+"
-      )}&page=${page}&fields=username,tags,previews,url`
+      )}&page=${page}&fields=username,tags,previews,url,description,duration`
     )
     .then((r) => r.data)
     .then((data) => res.json(data))
