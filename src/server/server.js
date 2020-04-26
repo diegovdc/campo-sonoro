@@ -2,6 +2,7 @@ require("dotenv").config();
 const axios = require("axios");
 const express = require("express");
 const app = express();
+const striptags = require("striptags");
 const port = process.env.PORT || 3000;
 const token = process.env.FREESOUND_API_TOKEN;
 var cors = require("cors");
@@ -17,7 +18,13 @@ app.get("/data", (req, res) => {
         "+"
       )}&page=${page}&fields=username,tags,previews,url,description,duration`
     )
-    .then((r) => r.data)
+    .then(({ data }) => {
+      data.results = data.results.map((d) => {
+        d.description = striptags(d.description);
+        return d;
+      });
+      return data;
+    })
     .then((data) => res.json(data))
     .catch((error) => {
       console.error(error);
